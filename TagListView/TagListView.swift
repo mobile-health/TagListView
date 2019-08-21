@@ -292,7 +292,7 @@ open class TagListView: UIView {
         return CGSize(width: frame.width, height: height)
     }
     
-    private func createNewTagView(_ title: String) -> TagView {
+    private func createNewTagView(_ title: String, bdColor: UIColor? = nil) -> TagView {
         let tagView = TagView(title: title)
         
         tagView.textColor = textColor
@@ -303,7 +303,7 @@ open class TagListView: UIView {
         tagView.titleLineBreakMode = tagLineBreakMode
         tagView.cornerRadius = cornerRadius
         tagView.borderWidth = borderWidth
-        tagView.borderColor = borderColor
+        tagView.borderColor = bdColor ?? borderColor
         tagView.selectedBorderColor = selectedBorderColor
         tagView.paddingX = paddingX
         tagView.paddingY = paddingY
@@ -326,14 +326,14 @@ open class TagListView: UIView {
     }
 
     @discardableResult
-    open func addTag(_ title: String) -> TagView {
+    open func addTag(_ title: String, bdColor: UIColor? = nil) -> TagView {
         defer { rearrangeViews() }
-        return addTagView(createNewTagView(title))
+        return addTagView(createNewTagView(title, bdColor: bdColor))
     }
     
     @discardableResult
     open func addTags(_ titles: [String]) -> [TagView] {
-        return addTagViews(titles.map(createNewTagView))
+        return addTagViews(titles.map{createNewTagView($0)})
     }
     
     @discardableResult
