@@ -9,7 +9,6 @@
 import UIKit
 
 internal class CloseButton: UIButton {
-
     var iconSize: CGFloat = 10
     var lineWidth: CGFloat = 1
     var lineColor: UIColor = UIColor.white.withAlphaComponent(0.54)
@@ -38,5 +37,4 @@ internal class CloseButton: UIButton {
 
         path.stroke()
     }
-
 }
